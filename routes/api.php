@@ -21,6 +21,12 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user']);
+
+    Route::get('/tasks', [TaskController::class, 'index']);         // Get all tasks
+    Route::post('/tasks', [TaskController::class, 'store']);        // Create a task
+    Route::get('/tasks/{id}', [TaskController::class, 'show']);     // Get a single task by ID
+    Route::put('/tasks/{id}', [TaskController::class, 'update']);   // Update a task
+    Route::delete('/tasks/{id}', [TaskController::class, 'destroy']);
 });
 
 
